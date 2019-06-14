@@ -11,7 +11,7 @@
   
     Formula for cuboid surface area of a cube: 2 * (length * width + length * height + width * height)
 */
-class CubeMaker{
+class CuboidMaker1{
  constructor (attributes){
     this.length = attributes.length;
     this.width = attributes.width;
@@ -30,15 +30,37 @@ class CubeMaker{
     Add properties and values of length: 4, width: 5, and height: 5 to cuboid.   
   */
 
-const cube = new CuboidMaker({
+const cuboid1 = new CuboidMaker1({
     length: 4,
     width: 5,
     height: 5
 });
 
 // Test your volume and surfaceArea methods by uncommenting the logs below:
-console.log(cube.volume()); // 100
-console.log(cube.surfaceArea()); // 130
-//changed to cube because cuboid was already declared, so testing the results.
+console.log(cuboid1.volume()); // 100
+console.log(cuboid1.surfaceArea()); // 130
+//changed to cuboid1 because cuboid was already declared, so testing the results.
 
-// Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.  Find out the formulas for volume and surface area for cubes and create those methods using the dimension properties from CuboidMaker.  Test your work by logging out your volume and surface area.
+// Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker. 
+// Find out the formulas for volume and surface area for cubes and create those methods 
+// using the dimension properties from CuboidMaker. Test your work by logging out your volume and surface area.
+class CubeMaker extends CuboidMaker1{
+    constructor(cubeAttributes){
+        super(cubeAttributes);
+    }
+    cubeVolume(){
+        return (this.width * this.height * this.length);
+    }
+    cubeSurfaceArea(){
+        return (6*(this.length * this.height));
+    }
+}
+
+const cube1 = new CubeMaker({
+    length: 7,
+    width: 7, 
+    height: 7
+});
+
+console.log(cube1.cubeVolume());
+console.log(cube1.cubeSurfaceArea());
